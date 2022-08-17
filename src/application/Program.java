@@ -20,6 +20,7 @@ public class Program {
 		List<Employee> list = new ArrayList<>(employeesNumber);
 
 		for (int i = 0; i < employeesNumber; i++) {
+			System.out.println();
 			System.out.println("Emplyoee #" + (i + 1) + ":");
 			System.out.print("Id: ");
 			Integer id = sc.nextInt();
@@ -31,11 +32,15 @@ public class Program {
 			Double salary = sc.nextDouble();
 			list.add(new Employee(id, name, salary));
 		}
+		
+		System.out.println();
 
 		System.out.print("Enter the employee id that will have salary increase: ");
+		// int id = sc.nextInt();
 		Integer id = sc.nextInt();
 
-		Employee employeeId = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+		// Employee employeeId = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+		Employee employeeId = list.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
 		if (employeeId == null) {
 			System.out.println("This id does not exist!");
 		} else {
@@ -43,6 +48,8 @@ public class Program {
 			double percentage = sc.nextDouble();
 			employeeId.increaseSalary(percentage);
 		}
+
+		System.out.println();
 
 		System.out.println("List of employees: ");
 		for (Employee employeeList : list) {
